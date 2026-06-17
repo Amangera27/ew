@@ -121,8 +121,8 @@ export default function FeaturesSection() {
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
               className="group h-full"
             >
-              <div className="bg-white p-8 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:border-orange-200 transition-all duration-300 h-full flex flex-col relative overflow-hidden">
-                <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mb-6 group-hover:bg-orange-100 group-hover:scale-110 transition-all duration-300">
+              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_0_50px_rgba(247,147,30,0.25)] hover:border-[#F7931E]/50 transition-all duration-500 h-full flex flex-col relative overflow-hidden">
+                <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mb-6 group-hover:bg-[#F7931E]/10 group-hover:shadow-[0_0_20px_rgba(247,147,30,0.3)] group-hover:scale-110 transition-all duration-500">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4">{feature.title}</h3>

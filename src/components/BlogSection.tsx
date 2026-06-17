@@ -75,7 +75,7 @@ export default function BlogSection() {
 
         {/* Creative Expanding Accordion Gallery */}
         <div 
-          className="flex flex-col lg:flex-row w-full h-auto lg:h-[600px] gap-4 mt-8 mb-12"
+          className="flex flex-col lg:flex-row w-full h-auto lg:h-[400px] gap-4 mt-8 mb-12"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -89,7 +89,7 @@ export default function BlogSection() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setActiveIndex(index)}
-                className={`relative w-full h-[300px] lg:h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl ${isActive ? 'lg:flex-[3]' : 'lg:flex-1'}`}
+                className={`relative w-full h-[250px] lg:h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl ${isActive ? 'lg:flex-[3]' : 'lg:flex-1'}`}
               >
                 {/* Image */}
                 <img

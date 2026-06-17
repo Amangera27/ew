@@ -119,24 +119,24 @@ export default function TestimonialsSection() {
 
 function TestimonialCard({ item }: { item: any }) {
   return (
-    <div className="relative w-[85vw] sm:w-[340px] md:w-[400px] max-w-[400px] shrink-0 rounded-2xl bg-transparent border border-white/40 p-6 md:p-8 flex flex-col gap-4 md:gap-6 shadow-2xl transition-transform duration-300 hover:-translate-y-2 group backdrop-blur-sm">
+    <div className="relative w-[85vw] sm:w-[340px] md:w-[400px] max-w-[400px] shrink-0 rounded-2xl bg-transparent border border-white/40 p-5 flex flex-col gap-3 md:gap-4 shadow-2xl transition-transform duration-300 hover:-translate-y-2 group backdrop-blur-sm">
       {/* Subtle hover glow */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      <Quote className="w-8 h-8 text-[#F7931E]/30 mb-2" />
+      <Quote className="w-6 h-6 text-[#F7931E]/30 mb-1" />
 
-      <p className="text-slate-300 text-sm md:text-base leading-relaxed flex-grow">
+      <p className="text-slate-300 text-xs md:text-sm leading-relaxed flex-grow">
         "{item.content}"
       </p>
 
-      <div className="flex items-center gap-4 mt-4 pt-6 border-t border-white/5">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#F7931E] to-[#FFB75E] flex items-center justify-center text-white font-bold text-sm shadow-[0_0_15px_rgba(247,147,30,0.3)]">
+      <div className="flex items-center gap-3 mt-2 pt-4 border-t border-white/5">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F7931E] to-[#FFB75E] flex items-center justify-center text-white font-bold text-xs shadow-[0_0_15px_rgba(247,147,30,0.3)]">
           {item.avatar}
         </div>
         <div className="flex flex-col">
-          <h4 className="text-white font-bold text-sm">{item.name}</h4>
-          <p className="text-[#89a8c2] text-xs mt-0.5">{item.role}</p>
-          <p className="text-[#89a8c2]/60 text-[10px] mt-0.5 uppercase tracking-wider">{item.company}</p>
+          <h4 className="text-white font-bold text-xs">{item.name}</h4>
+          <p className="text-[#89a8c2] text-[10px] mt-0.5">{item.role}</p>
+          <p className="text-[#89a8c2]/60 text-[9px] mt-0.5 uppercase tracking-wider">{item.company}</p>
         </div>
       </div>
     </div>

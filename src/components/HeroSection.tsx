@@ -13,107 +13,27 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
   const indexRef = useRef(0);
   const isTransitioningRef = useRef(false);
   const [bgVisible, setBgVisible] = useState(false);
-  const [currentFront, setCurrentFront] = useState(BG_IMAGES[0]);
-  const [currentGooey, setCurrentGooey] = useState(BG_IMAGES[1]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // ---------------------------------------------------------------------------
-  // Destroy SheryJS canvas + WebGL context (to prevent memory leaks)
-  // ---------------------------------------------------------------------------
-  const destroyShery = () => {
-    const container = document.querySelector(".images") as HTMLElement | null;
-    if (!container) return;
-    container.querySelectorAll("canvas").forEach((canvas) => {
-      const gl = canvas.getContext("webgl") || canvas.getContext("webgl2");
-      if (gl) {
-        const ext = gl.getExtension("WEBGL_lose_context");
-        if (ext) ext.loseContext();
-      }
-      canvas.remove();
-    });
-    container.querySelectorAll("div[style*='position']").forEach((el) => el.remove());
-  };
-
-  // ---------------------------------------------------------------------------
-  // Wait for BOTH images in .images to finish loading, then init SheryJS
-  // ---------------------------------------------------------------------------
-  const initShery = async () => {
-    destroyShery();
-
-    // @ts-ignore
-    const Shery = (await import("sheryjs")).default;
-
-    const imgs = document.querySelectorAll<HTMLImageElement>(".images img");
-    if (imgs.length < 2) return;
-
-    // Make sure both images are fully loaded before SheryJS reads their pixels
-    await Promise.all(
-      Array.from(imgs).map(
-        (img) =>
-          new Promise<void>((resolve) => {
-            if (img.complete && img.naturalWidth > 0) {
-              resolve();
-            } else {
-              img.onload = () => resolve();
-              img.onerror = () => resolve(); // continue even on error
-            }
-          })
-      )
-    );
-
-    Shery.imageEffect(".images", {
-      style: 6,
-      debug: false,
-      gooey: true,
-    });
-  };
-
-  // ---------------------------------------------------------------------------
-  // When ready flips true (intro done): show bg, then init SheryJS
+  // When ready flips true (intro done): show bg
   // ---------------------------------------------------------------------------
   useEffect(() => {
-    if (!ready) return;
-    setBgVisible(true); // render the .images div into DOM
-    return () => {
-      destroyShery();
-    };
+    if (ready) {
+      setBgVisible(true);
+    }
   }, [ready]);
 
   // ---------------------------------------------------------------------------
-  // Once bgVisible = true, images mount → init SheryJS after a short frame tick
+  // Auto-cycle background smoothly
   // ---------------------------------------------------------------------------
   useEffect(() => {
     if (!bgVisible) return;
-    // 300ms gives images time to render and be readable by SheryJS
-    const timer = setTimeout(() => {
-      initShery();
-    }, 300);
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % BG_IMAGES.length);
+    }, 5000); // Change scene every 5 seconds
+    return () => clearInterval(interval);
   }, [bgVisible]);
-
-  // ---------------------------------------------------------------------------
-  // Click handler — cycle background with gooey transition
-  // ---------------------------------------------------------------------------
-  const handleClick = async () => {
-    if (!bgVisible || isTransitioningRef.current) return;
-    isTransitioningRef.current = true;
-
-    const nextIndex = (indexRef.current + 1) % BG_IMAGES.length;
-    const nextGooey = BG_IMAGES[(nextIndex + 1) % BG_IMAGES.length];
-
-    indexRef.current = nextIndex;
-    setCurrentIndex(nextIndex);
-    setCurrentFront(BG_IMAGES[nextIndex]);
-    setCurrentGooey(nextGooey);
-
-    // Give React one frame to update src, then re-init SheryJS
-    setTimeout(async () => {
-      await initShery();
-      setTimeout(() => {
-        isTransitioningRef.current = false;
-      }, 800);
-    }, 60);
-  };
 
   // ---------------------------------------------------------------------------
   // Framer Motion variants — only animate when ready
@@ -140,54 +60,30 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
 
   return (
     <div
-      className="relative w-full min-h-screen flex items-center justify-start pt-24 px-6 overflow-hidden cursor-pointer"
-      onClick={handleClick}
+      className="relative w-full min-h-screen flex items-center justify-start pt-24 px-6 overflow-hidden"
     >
 
       {/* ------------------------------------------------------------------ */}
-      {/* SheryJS background — only mounted in DOM after intro completes      */}
+      {/* Background Images Crossfade                                         */}
       {/* ------------------------------------------------------------------ */}
       {bgVisible && (
-        // Outer wrapper handles the smooth fade-in
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh", zIndex: 0 }}
-        >
-          {/* .images must be a plain div — motion styles on it break SheryJS WebGL */}
-          <div
-            className="images"
-            style={{ width: "100%", height: "100%", position: "relative" }}
-          >
-            <img
-              src={currentFront}
-              alt="front_image"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-black">
+          <AnimatePresence initial={false}>
+            <motion.img
+              key={currentIndex}
+              src={BG_IMAGES[currentIndex]}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              alt="background"
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             />
-            <img
-              src={currentGooey}
-              alt="gooey_image"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </div>
-        </motion.div>
+          </AnimatePresence>
+        </div>
       )}
 
-      {/* Click hint */}
-      {bgVisible && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-8 right-8 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md pointer-events-none"
-        >
-          <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-          <span className="text-white/80 text-xs font-medium tracking-wider uppercase">
-            Click to change scene
-          </span>
-        </motion.div>
-      )}
+
 
       {/* ------------------------------------------------------------------ */}
       {/* Floating Device Overlays                                            */}
@@ -197,25 +93,25 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
           <motion.div
             key="desktop"
             initial={{ opacity: 0, x: 100, y: "-45%", scale: 0.9 }}
-            animate={{ 
-              opacity: 1, 
-              x: 0, 
-              y: ["-50%", "-52%", "-50%"], 
-              scale: 1 
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: ["-50%", "-52%", "-50%"],
+              scale: 1
             }}
             exit={{ opacity: 0, x: 100, y: "-45%", scale: 0.9 }}
-            transition={{ 
+            transition={{
               opacity: { duration: 0.8 },
               x: { duration: 0.8, ease: "easeOut" },
               y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
               scale: { duration: 0.8 }
             }}
-            className="absolute right-[-2%] xl:right-[2%] top-[50%] w-[38%] max-w-[600px] z-10 pointer-events-none hidden lg:block drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+            className="absolute right-[1%] xl:right-[3%] top-[60%] w-[44%] max-w-[700px] z-10 pointer-events-none hidden lg:block drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
           >
-            <img 
-              src="/desktopSvg.svg" 
-              alt="Desktop Dashboard" 
-              className="w-full h-auto" 
+            <img
+              src="/desktopSvg.svg"
+              alt="Desktop Dashboard"
+              className="w-full h-auto"
             />
           </motion.div>
         )}
@@ -224,14 +120,14 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
           <motion.div
             key="mobile"
             initial={{ opacity: 0, x: 100, y: "-45%", scale: 0.9 }}
-            animate={{ 
-              opacity: 1, 
-              x: 0, 
-              y: ["-50%", "-52%", "-50%"], 
-              scale: 1 
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: ["-50%", "-52%", "-50%"],
+              scale: 1
             }}
             exit={{ opacity: 0, x: 100, y: "-45%", scale: 0.9 }}
-            transition={{ 
+            transition={{
               opacity: { duration: 0.8 },
               x: { duration: 0.8, ease: "easeOut" },
               y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
@@ -239,10 +135,10 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
             }}
             className="absolute right-[2%] xl:right-[5%] top-[58%] w-[25%] max-w-[400px] z-10 pointer-events-none hidden lg:block drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
           >
-            <img 
-              src="/mobileSvg.svg" 
-              alt="Mobile App" 
-              className="w-full h-auto" 
+            <img
+              src="/mobileSvg.svg"
+              alt="Mobile App"
+              className="w-full h-auto"
             />
           </motion.div>
         )}
@@ -268,16 +164,15 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
             </span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.2] md:leading-[1.15] tracking-tight drop-shadow-2xl mt-2 md:mt-0">
+          <h1 className="text-6xl font-black text-white leading-[1.1] md:leading-[1.05] tracking-tight drop-shadow-2xl mt-4 md:mt-2">
             {titleWords.map((word, index) => (
               <motion.span
                 key={index}
                 variants={itemVariants}
-                className={`inline-block mr-[0.25em] ${
-                  word === "electrical" || word === "compliance."
-                    ? "text-[var(--color-accent)]"
-                    : ""
-                }`}
+                className={`inline-block mr-[0.25em] ${word === "electrical" || word === "compliance."
+                  ? "text-[var(--color-accent)]"
+                  : ""
+                  }`}
               >
                 {word}
               </motion.span>
@@ -286,7 +181,7 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
 
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-white/85 max-w-lg leading-relaxed font-light drop-shadow-lg mt-2 md:mt-0"
+            className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-xl leading-relaxed font-normal drop-shadow-lg mt-4 md:mt-6"
           >
             Create, manage, sign and share SANS-compliant Certificates of
             Compliance digitally. Save up to 60% of your admin time while

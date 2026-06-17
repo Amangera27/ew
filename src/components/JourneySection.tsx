@@ -153,20 +153,25 @@ export default function JourneySection() {
   const inView = useInView(containerRef, { once: true, margin: "-50px" });
   const [activeStep, setActiveStep] = useState(0);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !isInteracting) {
       controls.start("visible");
 
       const interval = setInterval(() => {
         setActiveStep((prev) => (prev + 1) % steps.length);
-      }, 2500); // 2.5 seconds per step
+      }, 3500);
 
       return () => clearInterval(interval);
     }
-  }, [inView, controls]);
+  }, [inView, controls, isInteracting]);
 
   useEffect(() => {
+    if (isInteracting) return;
     const container = scrollContainerRef.current;
     const targetElement = stepRefs.current[activeStep];
 
@@ -182,7 +187,33 @@ export default function JourneySection() {
         behavior: "smooth",
       });
     }
-  }, [activeStep]);
+  }, [activeStep, isInteracting]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsInteracting(true);
+    setIsDragging(true);
+    if (!scrollContainerRef.current) return;
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setTimeout(() => setIsInteracting(false), 3000);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setTimeout(() => setIsInteracting(false), 3000);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <section
@@ -220,8 +251,14 @@ export default function JourneySection() {
         {/* The container allows horizontal scrolling, hiding the scrollbar for aesthetics */}
         <div
           ref={scrollContainerRef}
-          className="w-full max-w-7xl mx-auto px-6 md:px-12 overflow-x-auto snap-x snap-mandatory pb-12 pt-4 scrollbar-hide"
+          className="w-full max-w-7xl mx-auto px-6 md:px-12 overflow-x-auto snap-x snap-mandatory pb-12 pt-4 scrollbar-hide cursor-grab active:cursor-grabbing"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onTouchStart={() => setIsInteracting(true)}
+          onTouchEnd={() => setTimeout(() => setIsInteracting(false), 3000)}
         >
           <style>{`
             .scrollbar-hide::-webkit-scrollbar {

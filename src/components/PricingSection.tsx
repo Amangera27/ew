@@ -162,22 +162,22 @@ export default function PricingSection() {
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-full h-full"
           >
-            <SpotlightCard className="p-8 md:p-10">
-              <h3 className="text-2xl font-bold text-white mb-2">Token Plan</h3>
-              <p className="text-blue-100 text-sm mb-8">Pay as you go for occasional documents.</p>
+            <SpotlightCard className="p-4 md:p-5">
+              <h3 className="text-xl font-bold text-white mb-1.5">Token Plan</h3>
+              <p className="text-blue-100 text-[11px] mb-4">Pay as you go for occasional documents.</p>
 
-              <div className="flex items-end gap-2 mb-8">
-                <span className="text-5xl font-black text-white">R 10</span>
-                <span className="text-blue-200 font-medium text-sm mb-1">/ token</span>
+              <div className="flex items-end gap-1.5 mb-4">
+                <span className="text-3xl font-black text-white leading-none">R 10</span>
+                <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ token</span>
               </div>
 
-              <button className="w-full py-3.5 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 hover:border-white/30 transition-all duration-300 mb-8 shadow-sm backdrop-blur-sm">
+              <button className="w-full py-2 bg-white/10 border border-white/20 text-white rounded-xl text-xs font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
                 Start Free
               </button>
 
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-8" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-4" />
 
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2.5">
                 <FeatureItem text={<>Access to <span className="text-white font-bold">all</span> templates</>} isDark />
                 <FeatureItem text="1 team member" isDark />
               </div>
@@ -194,27 +194,27 @@ export default function PricingSection() {
             transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="w-full relative z-20 h-full"
           >
-            <SpotlightCard isPopular={true} className="p-8 md:p-10">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-3xl font-black text-white">Solo Plan</h3>
-                <div className="bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white px-4 py-1 rounded-full text-[9px] font-black tracking-widest uppercase shadow-[0_0_20px_rgba(247,147,30,0.5),inset_0_1px_0_rgba(255,255,255,0.4)] whitespace-nowrap mt-1">
-                  Most Popular
-                </div>
-              </div>
-              <p className="text-blue-100 text-sm mb-8">Everything a professional needs to streamline their workflow.</p>
+            {/* FLOATING BADGE OUTSIDE THE CARD TO AVOID OVERFLOW CLIPPING */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white px-4 py-1.5 rounded-full text-[9px] font-black tracking-widest uppercase shadow-[0_5px_15px_rgba(247,147,30,0.5),inset_0_1px_0_rgba(255,255,255,0.4)] whitespace-nowrap z-40">
+              Most Popular
+            </div>
 
-              <div className="flex items-end gap-2 mb-8">
-                <span className="text-6xl font-black text-white leading-none">R 299</span>
-                <span className="text-blue-200 font-medium text-sm mb-1">/ month</span>
+            <SpotlightCard isPopular={true} className="p-4 md:p-5 pt-6 relative">
+              <h3 className="text-2xl font-black text-white mb-1.5 mt-2">Solo Plan</h3>
+              <p className="text-blue-100 text-[11px] mb-4">Everything a professional needs to streamline their workflow.</p>
+
+              <div className="flex items-end gap-1.5 mb-4">
+                <span className="text-4xl font-black text-white leading-none">R 299</span>
+                <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ month</span>
               </div>
 
-              <button className="w-full py-4 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-lg hover:brightness-110 transition-all duration-300 shadow-[0_5px_20px_rgba(247,147,30,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] mb-8 hover:-translate-y-1">
+              <button className="w-full py-2.5 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-sm hover:brightness-110 transition-all duration-300 shadow-[0_5px_20px_rgba(247,147,30,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] mb-4 hover:-translate-y-1">
                 Get Started
               </button>
 
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-8" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-4" />
 
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2.5">
                 <FeatureItem
                   text={<>Access to <span className="text-white font-bold">all</span> templates</>}
                   isDark
@@ -236,22 +236,22 @@ export default function PricingSection() {
             transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="w-full h-full"
           >
-            <SpotlightCard className="p-8 md:p-10">
-              <h3 className="text-2xl font-bold text-white mb-2">Team Plan</h3>
-              <p className="text-blue-100 text-sm mb-8">Uncapped productivity for companies.</p>
+            <SpotlightCard className="p-4 md:p-5">
+              <h3 className="text-xl font-bold text-white mb-1.5">Team Plan</h3>
+              <p className="text-blue-100 text-[11px] mb-4">Uncapped productivity for companies.</p>
 
-              <div className="flex items-end gap-2 mb-8">
-                <span className="text-5xl font-black text-white">R 999</span>
-                <span className="text-blue-200 font-medium text-sm mb-1">/ month</span>
+              <div className="flex items-end gap-1.5 mb-4">
+                <span className="text-3xl font-black text-white leading-none">R 999</span>
+                <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ month</span>
               </div>
 
-              <button className="w-full py-3.5 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 hover:border-white/30 transition-all duration-300 mb-8 shadow-sm backdrop-blur-sm">
+              <button className="w-full py-2 bg-white/10 border border-white/20 text-white rounded-xl text-xs font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
                 Contact Sales
               </button>
 
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-8" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-4" />
 
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2.5">
                 <FeatureItem text={<><span className="text-white font-bold">Unlimited</span> team members</>} isDark />
                 <FeatureItem text="Custom document builder" isDark />
                 <FeatureItem text={<>Access to <span className="text-[var(--color-accent)] font-bold">Connect</span></>} isDark />
