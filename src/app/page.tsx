@@ -1,65 +1,121 @@
-import Image from "next/image";
+"use client";
+
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import PricingSection from "@/components/PricingSection";
+import JourneySection from "@/components/JourneySection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import BlogSection from "@/components/BlogSection";
+import FAQSection from "@/components/FAQSection";
+import FooterSection from "@/components/FooterSection";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [introComplete, setIntroComplete] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
+
+  useEffect(() => {
+    // Force the browser to start at the top on every reload
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    }
+
+    // 2.6s total: 2.2s animation + 0.4s hold
+    const revealTimer = setTimeout(() => setIntroComplete(true), 2600);
+    // Remove overlay from DOM after fade-out finishes (0.5s after intro)
+    const removeTimer = setTimeout(() => setShowOverlay(false), 3200);
+    
+    return () => {
+      clearTimeout(revealTimer);
+      clearTimeout(removeTimer);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    // White background so the dark-blue liquid sweep is clearly visible
+    // After intro: bg transitions smoothly to dark (same color as hero bg)
+    // Removed overflow-hidden from main so the page can scroll
+    <main className={`relative transition-colors duration-700 ${introComplete ? 'bg-[#0B3C5D]' : 'bg-white'}`}>
+
+      {/* Navbar always on top — above liquid overlay (z-50) */}
+      <div className="relative z-[60] w-full">
+        <Navbar />
+      </div>
+
+      {/* Page content — HeroSection gated by ready prop and pinned to background */}
+      {/* sticky top-0 keeps it fixed while the next section scrolls over it */}
+      <div className="sticky top-0 z-10 w-full h-screen overflow-hidden">
+        <HeroSection ready={introComplete} />
+      </div>
+
+      {/* Features Section — scrolls over the sticky HeroSection */}
+      <FeaturesSection />
+
+      {/* Pricing Section */}
+      <PricingSection />
+
+      {/* Journey Snake Stepper Section */}
+      <JourneySection />
+
+      {/* Client Testimonials Marquee Section */}
+      <TestimonialsSection />
+
+      {/* Blog & Resources Section */}
+      <BlogSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
+
+      {/* Footer Section */}
+      <FooterSection />
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Liquid intro overlay — dark blue SVG sweeps DOWN over white bg      */}
+      {/* Sits at z-50 so it covers absolutely everything                     */}
+      {/* ------------------------------------------------------------------ */}
+      {showOverlay && (
+        <motion.div
+          className="fixed inset-0 z-50 pointer-events-none"
+          animate={{ opacity: introComplete ? 0 : 1 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {/* White background behind the SVG so it starts clean */}
+          <div className="absolute inset-0 bg-white" />
+
+          {/* Dark blue liquid that fills from top */}
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <motion.path
+              fill="#0B3C5D"
+              initial={{ d: "M 0 0 L 100 0 L 100 0 Q 50 0 0 0 Z" }}
+              animate={{
+                d: [
+                  "M 0 0 L 100 0 L 100 0 Q 50 0 0 0 Z",
+                  "M 0 0 L 100 0 L 100 30 Q 50 200 0 30 Z",
+                  "M 0 0 L 100 0 L 100 100 Q 50 65 0 100 Z",
+                  "M 0 0 L 100 0 L 100 100 Q 50 118 0 100 Z",
+                  "M 0 0 L 100 0 L 100 100 Q 50 95 0 100 Z",
+                  "M 0 0 L 100 0 L 100 100 Q 50 100 0 100 Z",
+                ],
+              }}
+              transition={{
+                duration: 2.2,
+                times: [0, 0.35, 0.6, 0.75, 0.88, 1],
+                ease: "easeInOut",
+              }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </svg>
+        </motion.div>
+      )}
+
+    </main>
   );
 }
