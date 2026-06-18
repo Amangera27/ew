@@ -6,33 +6,38 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     id: "01",
-    question: "What is the primary benefit of moving beyond paper compliance?",
-    answer:
-      "Transitioning from paper to digital compliance significantly reduces human error, accelerates the approval process, and provides a secure, searchable archive of all your compliance documents. It empowers your team to focus on core tasks rather than administrative overhead."
+    question: "Are the COCs generated compliant with the latest regulations?",
+    answer: "Yes, all Certificates of Compliance generated through Energy Warehouse are 100% compliant with SANS 10142-1 and all current South African electrical regulations."
   },
   {
     id: "02",
-    question: "How secure are the biometric signatures?",
-    answer:
-      "Our biometric signatures utilize advanced cryptographic protocols ensuring that each signature is uniquely tied to the individual's biometric data. This provides a non-repudiable and highly secure method of authentication, exceeding industry standards."
+    question: "Are the EW documents proprietary designs?",
+    answer: "Yes, our document layouts, smart templates, and reporting structures are proprietary to Energy Warehouse, specifically engineered to provide maximum clarity, security, and professionalism."
   },
   {
     id: "03",
-    question: "Can I integrate this system with my existing ERP?",
-    answer:
-      "Yes, our platform is designed with a robust API-first architecture, allowing seamless integration with most major ERP and CRM systems. This ensures data flows smoothly across your organization without creating isolated silos."
+    question: "Do my clients need the app?",
+    answer: "No, your clients do not need to download the app. They can view, review, and digitally sign-off on documents via a secure web link that is sent directly to their email or phone."
   },
   {
     id: "04",
-    question: "What kind of support do you offer during the onboarding process?",
-    answer:
-      "We provide comprehensive white-glove onboarding, including dedicated account managers, customized training sessions for your team, and 24/7 technical support to ensure a smooth and efficient transition to our platform."
+    question: "Are documents stored forever?",
+    answer: "Yes! All your finalized COCs, annexures, and job history are securely archived in the cloud indefinitely. You can search, retrieve, or resend historical documents at any time."
   },
   {
     id: "05",
-    question: "Is the platform compliant with international data protection regulations?",
-    answer:
-      "Absolutely. We adhere to stringent global data protection regulations, including GDPR and CCPA. All data is encrypted both at rest and in transit, ensuring your sensitive information remains private and secure."
+    question: "Can more than one person work on a job?",
+    answer: "Absolutely. Our platform is built for team collaboration. You can invite other technicians or inspectors to capture data, add photos, or fill out specific sections of the same job before final sign-off."
+  },
+  {
+    id: "06",
+    question: "How does billing work?",
+    answer: "We operate on a simple, transparent 'Pay as you go' token system. You purchase tokens in bulk, and each final official document generation consumes a token. There are no hidden monthly subscription fees."
+  },
+  {
+    id: "07",
+    question: "Do tokens expire?",
+    answer: "No, purchased tokens do not expire. They remain securely in your account balance indefinitely until you use them to generate an official document."
   }
 ];
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, PlayCircle, ShieldCheck, ArrowUpRight, ChevronDown } from "lucide-react";
 
 const BG_IMAGES = [
   "/bg_front.png",      // original dark blue digital circuit/web image
@@ -60,7 +60,7 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
 
   return (
     <div
-      className="relative w-full min-h-screen flex items-center justify-start pt-24 px-6 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-start pt-20 md:pt-24 px-6 overflow-hidden"
     >
 
       {/* ------------------------------------------------------------------ */}
@@ -153,18 +153,33 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
         animate={ready ? "visible" : "hidden"}
         className="relative z-10 max-w-7xl w-full mx-auto pointer-events-none"
       >
-        <div className="flex flex-col items-start text-left gap-5 md:gap-6 max-w-3xl pointer-events-none mt-24 md:mt-0">
+        <div className="flex flex-col items-start text-left gap-4 md:gap-6 max-w-3xl pointer-events-none mt-8 md:mt-0">
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-md"
+            className="flex flex-wrap items-center gap-3"
           >
-            <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-            <span className="text-white/90 text-sm font-medium tracking-wide">
-              The New Standard for Compliance
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span className="text-white/90 text-sm font-medium tracking-wide">
+                The New Standard for Compliance
+              </span>
+            </div>
+            
+            {/* Affiliation Badge based on PDF */}
+            <a 
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-md hover:bg-white/20 transition-all pointer-events-auto cursor-pointer"
+            >
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span className="text-white/90 text-sm font-medium tracking-wide">
+                Affiliated with Nearby Electrician
+              </span>
+              <ArrowUpRight size={16} className="text-white/90" />
+            </a>
           </motion.div>
 
-          <h1 className="text-6xl font-black text-white leading-[1.1] md:leading-[1.05] tracking-tight drop-shadow-2xl mt-4 md:mt-2">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-[1.15] md:leading-[1.05] tracking-tight drop-shadow-2xl mt-0 md:mt-2">
             {titleWords.map((word, index) => (
               <motion.span
                 key={index}
@@ -181,9 +196,9 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
 
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl text-white/95 max-w-xl leading-relaxed font-normal drop-shadow-lg mt-4 md:mt-6"
+            className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed font-light drop-shadow-lg mt-3 md:mt-6"
           >
-            Create, manage, sign and share SANS-compliant Certificates of
+            Create, manage, sign and share SANS 10142-1 compliant Certificates of
             Compliance digitally. Save up to 60% of your admin time while
             improving accuracy on every site.
           </motion.p>
@@ -202,14 +217,41 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
 
             <button
               className="w-full sm:w-auto justify-center px-8 py-3.5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 flex items-center gap-2 transform hover:scale-[1.02] pointer-events-auto"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                document.getElementById('demo-video')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               <PlayCircle size={18} />
-              Book Live Demo
+              Watch 2-Min Demo
             </button>
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Absolute Positioned Scroll Down Indicator */}
+      <AnimatePresence>
+        {ready && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors cursor-pointer z-50 pointer-events-auto"
+            onClick={(e) => {
+              e.stopPropagation();
+              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <span className="text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase">Scroll to explore</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              <ChevronDown size={28} className="text-[var(--color-accent)] opacity-90" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

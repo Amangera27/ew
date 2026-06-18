@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, Zap, Wrench, Sun, ClipboardCheck, Lightbulb } from "lucide-react";
 
 // --- DUMMY DATA ---
 const testimonials = [
@@ -59,6 +59,14 @@ const testimonials = [
 // Duplicate the array to create a seamless infinite loop
 const row1 = [...testimonials, ...testimonials];
 
+const trustedRoles = [
+  { name: "Electricians", icon: Zap },
+  { name: "Contractors", icon: Wrench },
+  { name: "Solar Installers", icon: Sun },
+  { name: "Inspectors", icon: ClipboardCheck },
+  { name: "Electrical Consultants", icon: Lightbulb },
+];
+
 export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="relative z-20 w-full bg-[#0B3C5D] text-white py-12 overflow-hidden border-t border-white/5">
@@ -67,7 +75,7 @@ export default function TestimonialsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#0B3C5D]/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#F7931E]/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center mb-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center mb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,6 +94,22 @@ export default function TestimonialsSection() {
           <p className="text-[#89a8c2] text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
             See how forward-thinking companies are using our platform to secure their compliance workflows and accelerate their operations.
           </p>
+
+          {/* Trusted Roles Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap justify-center gap-3 md:gap-4 mt-10 w-full max-w-4xl"
+          >
+            {trustedRoles.map((role, idx) => (
+              <div key={idx} className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300 group cursor-default">
+                <role.icon className="w-4 h-4 text-[#F7931E] group-hover:scale-110 transition-transform" />
+                <span className="text-white text-sm font-medium tracking-wide">{role.name}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
 

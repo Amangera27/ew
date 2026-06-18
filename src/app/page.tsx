@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import VideoSection from "@/components/VideoSection";
 import PricingSection from "@/components/PricingSection";
 import JourneySection from "@/components/JourneySection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -55,6 +56,9 @@ export default function Home() {
 
       {/* Features Section — scrolls over the sticky HeroSection */}
       <FeaturesSection />
+
+      {/* 2-Min Walkthrough Video Section */}
+      <VideoSection />
 
       {/* Pricing Section */}
       <PricingSection />

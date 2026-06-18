@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({ disableAnimation = false }: { disableAnimation?: boolean }) {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,10 +27,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home" },
-    { name: "About" },
-    { name: "Services" },
-    { name: "Contact" }
+    { name: "Home", href: "/" },
+    { name: "Features", href: "/#features" },
+    { name: "Pricing", href: "/#pricing" },
+    { name: "FAQ", href: "/#faq" }
   ];
 
   const containerVariants: Variants = {
@@ -55,7 +56,7 @@ export default function Navbar() {
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-8 px-6">
       <motion.nav 
         variants={containerVariants}
-        initial="hidden"
+        initial={disableAnimation ? false : "hidden"}
         animate="visible"
         className={`w-full max-w-5xl px-8 py-4 flex items-center justify-between backdrop-blur-xl rounded-full border transition-colors duration-500 ${
           isScrolled 
@@ -64,26 +65,27 @@ export default function Navbar() {
         }`}
       >
         {/* Brand Logo */}
-        <div className="flex items-center cursor-pointer z-10 transition-opacity hover:opacity-80">
-          <Image 
-            src="/logo.svg" 
-            alt="Brand Logo" 
-            width={120} 
-            height={40} 
-            className={`w-auto h-8 object-contain transition-all duration-500 ${isScrolled ? 'brightness-0' : ''}`}
-            priority 
-          />
-        </div>
+        <Link href="/" className="flex items-center cursor-pointer z-10 transition-opacity hover:opacity-80">
+          <div className={`transition-all duration-500 rounded-xl flex items-center justify-center ${isScrolled ? 'bg-[#0B3C5D] px-4 py-1.5 shadow-md' : ''}`}>
+            <Image 
+              src="/logo.svg" 
+              alt="Brand Logo" 
+              width={120} 
+              height={40} 
+              className="w-auto h-7 md:h-8 object-contain"
+              priority 
+            />
+          </div>
+        </Link>
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-2 relative z-10">
           {navLinks.map((link) => {
             const isHovered = hoveredLink === link.name;
             return (
-              <motion.a 
-                variants={itemVariants}
+              <Link 
                 key={link.name}
-                href={`#${link.name.toLowerCase()}`}
+                href={link.href}
                 onMouseEnter={() => setHoveredLink(link.name)}
                 onMouseLeave={() => setHoveredLink(null)}
                 className={`relative px-6 py-2.5 text-[14px] font-medium transition-colors duration-300 rounded-full ${
@@ -106,7 +108,7 @@ export default function Navbar() {
                     />
                   )}
                 </AnimatePresence>
-              </motion.a>
+              </Link>
             );
           })}
         </div>
@@ -145,16 +147,16 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a 
+                <Link 
                   key={link.name} 
-                  href={`#${link.name.toLowerCase()}`}
+                  href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`font-medium px-4 py-3 rounded-xl transition-colors ${
                     isScrolled ? 'hover:bg-gray-100' : 'hover:bg-white/10'
                   }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
             <button className="mt-2 w-full px-7 py-3.5 bg-[var(--color-accent)] text-white rounded-full text-[15px] font-semibold hover:bg-[#e08419] transition-colors duration-300">
