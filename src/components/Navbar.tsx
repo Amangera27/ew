@@ -139,7 +139,7 @@ export default function Navbar({ disableAnimation = false }: { disableAnimation?
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className={`absolute top-24 left-6 right-6 p-6 rounded-3xl flex flex-col gap-4 shadow-2xl border backdrop-blur-2xl ${
+            className={`absolute top-28 md:top-32 left-6 right-6 p-6 rounded-3xl flex flex-col gap-4 shadow-2xl border backdrop-blur-2xl ${
               isScrolled 
                 ? 'bg-white/95 border-gray-200 text-gray-900' 
                 : 'bg-[#0B3C5D]/95 border-white/10 text-white'

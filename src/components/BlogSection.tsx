@@ -46,7 +46,7 @@ export default function BlogSection() {
   return (
     <section
       id="blog"
-      className="relative z-20 w-full min-h-[70vh] py-20 overflow-hidden bg-[#0B3C5D] border-t border-white/10"
+      className="relative z-20 w-full min-h-[70vh] py-10 md:py-20 overflow-hidden bg-[#0B3C5D] border-t border-white/10"
     >
       {/* Subtle Ambient Glow */}
       <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden">
@@ -75,7 +75,7 @@ export default function BlogSection() {
 
         {/* Creative Expanding Accordion Gallery */}
         <div 
-          className="flex flex-col lg:flex-row w-full h-auto lg:h-[400px] gap-4 mt-8 mb-12"
+          className="flex flex-col lg:flex-row w-full h-auto lg:h-[400px] gap-4 mt-8 mb-0 md:mb-12"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

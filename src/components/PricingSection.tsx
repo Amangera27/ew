@@ -171,7 +171,7 @@ export default function PricingSection() {
                 <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ token</span>
               </div>
 
-              <button className="w-full py-2 bg-white/10 border border-white/20 text-white rounded-xl text-xs font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
+              <button className="w-full py-3 bg-white/10 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
                 Start Free
               </button>
 
@@ -208,7 +208,7 @@ export default function PricingSection() {
                 <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ month</span>
               </div>
 
-              <button className="w-full py-2.5 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-sm hover:brightness-110 transition-all duration-300 shadow-[0_5px_20px_rgba(247,147,30,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] mb-4 hover:-translate-y-1">
+              <button className="w-full py-3.5 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-sm hover:brightness-110 transition-all duration-300 shadow-[0_5px_20px_rgba(247,147,30,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] mb-4 hover:-translate-y-1">
                 Get Started
               </button>
 
@@ -245,7 +245,7 @@ export default function PricingSection() {
                 <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ month</span>
               </div>
 
-              <button className="w-full py-2 bg-white/10 border border-white/20 text-white rounded-xl text-xs font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
+              <button className="w-full py-3 bg-white/10 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
                 Contact Sales
               </button>
 

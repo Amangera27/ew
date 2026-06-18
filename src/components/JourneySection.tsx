@@ -218,7 +218,7 @@ export default function JourneySection() {
   return (
     <section
       ref={containerRef}
-      className="relative z-20 text-white overflow-hidden py-12 bg-[#0B3C5D]"
+      className="relative z-20 text-white overflow-hidden pt-12 pb-2 md:py-12 bg-[#0B3C5D]"
     >
       <AnimatedConstellationBackground />
 
@@ -251,7 +251,7 @@ export default function JourneySection() {
         {/* The container allows horizontal scrolling, hiding the scrollbar for aesthetics */}
         <div
           ref={scrollContainerRef}
-          className="w-full max-w-7xl mx-auto px-6 md:px-12 overflow-x-auto snap-x snap-mandatory pb-12 pt-4 scrollbar-hide cursor-grab active:cursor-grabbing"
+          className="w-full max-w-7xl mx-auto px-6 md:px-12 overflow-x-auto snap-x snap-mandatory pb-4 md:pb-12 pt-4 scrollbar-hide cursor-grab active:cursor-grabbing"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}

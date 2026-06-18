@@ -185,7 +185,7 @@ export default function FeaturesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="w-full relative z-30 max-w-5xl mb-20 py-6 px-4 md:p-8 rounded-[2rem] bg-[#0A2540]/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden"
+          className="w-full relative z-30 max-w-5xl mb-12 md:mb-20 py-6 px-4 md:p-8 rounded-[2rem] bg-[#0A2540]/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden"
         >
           {/* Subtle grid pattern background */}
           <div 
@@ -248,7 +248,7 @@ export default function FeaturesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center max-w-3xl mb-20"
+          className="text-center max-w-3xl mb-10 md:mb-20"
         >
           <motion.div variants={itemReveal} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 mb-6 font-semibold text-sm">
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
@@ -297,9 +297,9 @@ export default function FeaturesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="w-full mt-16 mb-8"
+          className="w-full mt-12 md:mt-24 mb-6 md:mb-8"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between mb-12">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12">
             <motion.h3 variants={itemReveal} className="text-3xl font-bold tracking-tight text-center md:text-left mb-4 md:mb-0">
               Additional <span className="text-[var(--color-accent)]">Value-Add Features</span>
             </motion.h3>
