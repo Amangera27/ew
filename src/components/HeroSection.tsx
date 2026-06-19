@@ -172,8 +172,8 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-md hover:bg-white/20 transition-all pointer-events-auto cursor-pointer"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <span className="text-white/90 text-sm font-medium tracking-wide">
-                Affiliated with Nearby Electrician
+              <span className="text-white/90 text-sm font-medium tracking-wide flex items-center gap-2">
+                Affiliated with <img src="/nearby-electrician.svg" alt="Nearby Electrician" className="h-5 sm:h-6 w-auto" />
               </span>
               <ArrowUpRight size={16} className="text-white/90" />
             </a>

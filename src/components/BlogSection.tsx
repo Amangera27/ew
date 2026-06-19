@@ -3,33 +3,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-
-const posts = [
-  {
-    id: 1,
-    title: "Moving Beyond Paper Compliance",
-    category: "Insights",
-    imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80"
-  },
-  {
-    id: 2,
-    title: "Biometric Signatures Are Here",
-    category: "Product",
-    imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80"
-  },
-  {
-    id: 3,
-    title: "Navigating SANS Regulations",
-    category: "Industry",
-    imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=80"
-  },
-  {
-    id: 4,
-    title: "Scaling Operations by 300%",
-    category: "Case Study",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80"
-  }
-];
+import Link from "next/link";
+import { blogData } from "@/data/blogData";
 
 export default function BlogSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,7 +13,7 @@ export default function BlogSection() {
   React.useEffect(() => {
     if (isHovered) return;
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % posts.length);
+      setActiveIndex((prev) => (prev + 1) % blogData.length);
     }, 4000);
     return () => clearInterval(interval);
   }, [isHovered]);
@@ -79,7 +54,7 @@ export default function BlogSection() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {posts.map((post, index) => {
+          {blogData.map((post, index) => {
             const isActive = activeIndex === index;
             return (
               <motion.div
@@ -106,7 +81,7 @@ export default function BlogSection() {
                 <div className={`absolute inset-0 border-2 rounded-[2rem] transition-colors duration-700 pointer-events-none ${isActive ? 'border-[#F7931E]/50' : 'border-white/0'}`} />
 
                 {/* Content Container */}
-                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end items-start overflow-hidden">
+                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end items-start overflow-hidden pointer-events-none">
                   
                   {/* Top Category Badge */}
                   <div className={`mb-auto bg-white/10 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-white/20 shadow-lg transform transition-all duration-500 delay-100 ${isActive ? 'translate-y-0 opacity-100' : 'lg:-translate-y-4 lg:opacity-0'}`}>
@@ -128,6 +103,7 @@ export default function BlogSection() {
 
                   </div>
                 </div>
+                <Link href={`/blog-details/${post.id}`} className="block absolute inset-0 w-full h-full z-50" aria-label={`Read ${post.title}`} />
               </motion.div>
             );
           })}

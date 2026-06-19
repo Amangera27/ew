@@ -184,8 +184,9 @@ export default function FooterSection() {
                 <p className="text-[#89a8c2] text-sm leading-relaxed">
                   Institutions that are affiliated with Energy Warehouse.
                 </p>
-                <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#F7931E] transition-colors shrink-0 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-[#F7931E]/30">
-                  Nearby Electrician <ArrowUpRight className="w-3.5 h-3.5" />
+                <a href="#" className="inline-flex items-center gap-3 text-sm font-bold text-white hover:text-[#F7931E] transition-colors shrink-0 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-[#F7931E]/30">
+                  <img src="/nearby-electrician.svg" alt="Nearby Electrician" className="h-8 sm:h-10 w-auto" />
+                  <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
             </div>

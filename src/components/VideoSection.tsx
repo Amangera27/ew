@@ -77,7 +77,7 @@ export default function VideoSection() {
 
             <video
               ref={videoRef}
-              src="/video.mp4"
+              src="/ew-video.mp4"
               className="w-full h-auto object-cover cursor-pointer block rounded-b-lg md:rounded-b-2xl pt-6 md:pt-10"
               loop
               muted={isMuted}

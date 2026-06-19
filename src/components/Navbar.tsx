@@ -113,11 +113,22 @@ export default function Navbar({ disableAnimation = false }: { disableAnimation?
           })}
         </div>
 
-        {/* Action Button */}
-        <motion.div variants={itemVariants} className="hidden md:block z-10">
-          <button className="px-7 py-2.5 bg-[var(--color-accent)] text-white rounded-full text-[14px] font-semibold hover:bg-[#e08419] transition-colors duration-300">
-            Get Started
-          </button>
+        {/* Action Buttons */}
+        <motion.div variants={itemVariants} className="hidden md:flex items-center gap-2 z-10">
+          <Link 
+            href="/login" 
+            className={`px-5 py-2.5 text-[14px] font-semibold transition-colors duration-300 ${
+              isScrolled ? 'text-gray-700 hover:text-[var(--color-accent)]' : 'text-white/90 hover:text-white'
+            }`}
+          >
+            Login
+          </Link>
+          <Link 
+            href="/signup" 
+            className="px-6 py-2.5 bg-[var(--color-accent)] text-white rounded-full text-[14px] font-semibold hover:bg-[#e08419] transition-colors duration-300 shadow-lg shadow-[#F7931E]/20"
+          >
+            Sign Up
+          </Link>
         </motion.div>
 
         {/* Mobile Menu Button */}
@@ -159,9 +170,24 @@ export default function Navbar({ disableAnimation = false }: { disableAnimation?
                 </Link>
               ))}
             </div>
-            <button className="mt-2 w-full px-7 py-3.5 bg-[var(--color-accent)] text-white rounded-full text-[15px] font-semibold hover:bg-[#e08419] transition-colors duration-300">
-              Get Started
-            </button>
+            <div className="flex flex-col gap-3 mt-2">
+              <Link 
+                href="/login" 
+                className={`w-full text-center px-7 py-3 rounded-full text-[15px] font-semibold border transition-colors duration-300 ${
+                  isScrolled 
+                    ? 'border-gray-200 text-gray-700 hover:bg-gray-50' 
+                    : 'border-white/20 text-white hover:bg-white/10'
+                }`}
+              >
+                Login
+              </Link>
+              <Link 
+                href="/signup" 
+                className="w-full text-center px-7 py-3 bg-[var(--color-accent)] text-white rounded-full text-[15px] font-semibold hover:bg-[#e08419] transition-colors duration-300 shadow-lg shadow-[#F7931E]/20"
+              >
+                Sign Up
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
