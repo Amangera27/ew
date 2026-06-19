@@ -2,10 +2,10 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { 
-  Smartphone, FolderOpen, FileText, Fingerprint, MapPin, Users, 
-  CheckCircle2, ScrollText, UsersRound, Camera, CheckSquare, Mic, 
-  Tags, Archive, WifiOff, Copy, PenTool, FilePlus 
+import {
+  Smartphone, FolderOpen, FileText, Fingerprint, MapPin, Users,
+  CheckCircle2, ScrollText, UsersRound, Camera, CheckSquare, Mic,
+  Tags, Archive, WifiOff, Copy, PenTool, FilePlus
 } from "lucide-react";
 
 const features = [
@@ -176,9 +176,9 @@ function AnimatedCounter({ from, to, duration = 2 }: { from: number, to: number,
 
 export default function FeaturesSection() {
   return (
-    <section className="relative z-20 w-full bg-[#f8fafc] text-gray-900 pt-16 pb-12 px-6 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.15)]">
+    <section id="features" className="relative z-20 w-full bg-[#f8fafc] text-gray-900 pt-16 pb-12 px-6 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.15)]">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        
+
         {/* Premium Dark Trust Statistics Banner */}
         <motion.div
           variants={containerVariants}
@@ -188,11 +188,11 @@ export default function FeaturesSection() {
           className="w-full relative z-30 max-w-5xl mb-12 md:mb-20 py-6 px-4 md:p-8 rounded-[2rem] bg-[#0A2540]/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden"
         >
           {/* Subtle grid pattern background */}
-          <div 
-            className="absolute inset-0 z-0 opacity-20 pointer-events-none" 
-            style={{ 
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0H0V30' stroke='white' stroke-opacity='0.15' stroke-width='1'/%3E%3C/svg%3E")` 
-            }} 
+          <div
+            className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0H0V30' stroke='white' stroke-opacity='0.15' stroke-width='1'/%3E%3C/svg%3E")`
+            }}
           />
 
           {/* Subtle glow effect behind the banner */}
@@ -205,7 +205,7 @@ export default function FeaturesSection() {
                 <ScrollText className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
               <h4 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-0.5 md:mb-1 tracking-tighter drop-shadow-sm">
-                <AnimatedCounter from={0} to={50000} duration={2.5} />+
+                <AnimatedCounter from={0} to={500} duration={2.5} />
               </h4>
               <p className="text-blue-200/70 font-bold text-[9px] md:text-xs uppercase tracking-[0.2em]">Documents Generated</p>
             </motion.div>
@@ -215,16 +215,16 @@ export default function FeaturesSection() {
               {/* Divider lines for desktop - using subtle vertical gradients */}
               <div className="hidden md:block absolute left-0 top-[15%] bottom-[15%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
               <div className="hidden md:block absolute right-0 top-[15%] bottom-[15%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-              
+
               {/* Divider lines for mobile - using subtle horizontal gradients */}
               <div className="md:hidden absolute top-[-16px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <div className="md:hidden absolute bottom-[-16px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              
+
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-[#F7931E]/10 border border-[#F7931E]/20 flex items-center justify-center mb-2 md:mb-3 group-hover:bg-[#F7931E]/20 group-hover:scale-110 transition-all duration-500">
                 <UsersRound className="w-5 h-5 md:w-6 md:h-6 text-[#F7931E]" />
               </div>
               <h4 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#F7931E] to-[#FFB75E] mb-0.5 md:mb-1 tracking-tighter drop-shadow-sm">
-                <AnimatedCounter from={0} to={2000} duration={2.5} />+
+                <AnimatedCounter from={0} to={90} duration={2.5} />+
               </h4>
               <p className="text-[#F7931E]/70 font-bold text-[9px] md:text-xs uppercase tracking-[0.2em]">Active Users</p>
             </motion.div>
@@ -306,7 +306,7 @@ export default function FeaturesSection() {
             <motion.div variants={itemReveal} className="h-[1px] bg-gray-200 flex-grow ml-8 hidden md:block" />
           </div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >

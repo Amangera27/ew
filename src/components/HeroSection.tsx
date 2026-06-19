@@ -167,8 +167,9 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
             
             {/* Affiliation Badge based on PDF */}
             <a 
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href="https://nearbyelectrician.co.za/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur-md hover:bg-white/20 transition-all pointer-events-auto cursor-pointer"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />

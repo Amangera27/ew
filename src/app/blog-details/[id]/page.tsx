@@ -72,9 +72,14 @@ export default function BlogDetailsPage({ params }: { params: Promise<{ id: stri
 
           {/* Sticky Side Card */}
           <aside className="w-full lg:w-[320px] lg:sticky lg:top-10 bg-[#0B3C5D] text-white rounded-3xl p-8 shadow-[0_12px_35px_rgba(11,60,93,0.16)] shrink-0 flex flex-col items-start border border-white/10">
-            <div className="w-full h-40 bg-white/5 rounded-2xl mb-6 flex items-center justify-center p-4 border border-white/10">
-              <img src="/nearby-electrician.svg" alt="Nearby Electrician" className="w-full h-full object-contain drop-shadow-md" />
-            </div>
+            <a 
+              href="https://nearbyelectrician.co.za/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full h-40 bg-white/5 rounded-2xl mb-6 flex items-center justify-center p-4 border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group"
+            >
+              <img src="/nearby-electrician.svg" alt="Nearby Electrician" className="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300" />
+            </a>
             <h2 className="text-2xl font-bold text-white mb-4 leading-tight">
               Compliance done right
             </h2>
