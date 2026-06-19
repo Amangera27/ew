@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ArrowRight, PlayCircle, ShieldCheck, ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowRight, PlayCircle, ShieldCheck, ArrowUpRight, ChevronDown, Download } from "lucide-react";
 
 const BG_IMAGES = [
   "/bg_front.png",      // original dark blue digital circuit/web image
@@ -205,15 +205,18 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center w-full sm:w-auto gap-4 mt-6"
+            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center w-full gap-4 mt-6"
           >
-            <button
-              className="w-full sm:w-auto justify-center px-8 py-3.5 bg-[var(--color-accent)] text-white rounded-full font-semibold hover:bg-[#e08419] transition-all duration-300 flex items-center gap-2 group transform hover:scale-[1.02] pointer-events-auto"
+            <a
+              href="https://calendly.com/karel-ew/30-min-meeting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto justify-center px-8 py-3.5 bg-[var(--color-accent)] text-white rounded-full font-semibold hover:bg-[#e08419] transition-all duration-300 flex items-center gap-2 group transform hover:scale-[1.02] pointer-events-auto shadow-lg shadow-[#F7931E]/20"
               onClick={(e) => e.stopPropagation()}
             >
               Start Free
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
 
             <button
               className="w-full sm:w-auto justify-center px-8 py-3.5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 flex items-center gap-2 transform hover:scale-[1.02] pointer-events-auto"
@@ -225,6 +228,16 @@ export default function HeroSection({ ready = false }: { ready?: boolean }) {
               <PlayCircle size={18} />
               Watch 2-Min Demo
             </button>
+
+            <a
+              href="/energy-warehouse-coc-blog-html.zip"
+              download
+              className="w-full sm:w-auto justify-center px-8 py-3.5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 flex items-center gap-2 transform hover:scale-[1.02] pointer-events-auto shadow-lg shadow-black/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Download size={18} />
+              Free Download
+            </a>
           </motion.div>
         </div>
       </motion.div>
