@@ -205,7 +205,7 @@ export default function FeaturesSection() {
                 <ScrollText className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
               <h4 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-0.5 md:mb-1 tracking-tighter drop-shadow-sm">
-                <AnimatedCounter from={0} to={500} duration={2.5} />
+                <AnimatedCounter from={0} to={50000} duration={2.5} />
               </h4>
               <p className="text-blue-200/70 font-bold text-[9px] md:text-xs uppercase tracking-[0.2em]">Documents Generated</p>
             </motion.div>
@@ -224,7 +224,7 @@ export default function FeaturesSection() {
                 <UsersRound className="w-5 h-5 md:w-6 md:h-6 text-[#F7931E]" />
               </div>
               <h4 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#F7931E] to-[#FFB75E] mb-0.5 md:mb-1 tracking-tighter drop-shadow-sm">
-                <AnimatedCounter from={0} to={90} duration={2.5} />+
+                <AnimatedCounter from={0} to={250} duration={2.5} />+
               </h4>
               <p className="text-[#F7931E]/70 font-bold text-[9px] md:text-xs uppercase tracking-[0.2em]">Active Users</p>
             </motion.div>
