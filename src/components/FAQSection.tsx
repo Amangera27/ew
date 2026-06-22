@@ -7,37 +7,37 @@ const faqs = [
   {
     id: "01",
     question: "Are the COCs generated compliant with the latest regulations?",
-    answer: "Yes, all Certificates of Compliance generated through Energy Warehouse are 100% compliant with SANS 10142-1 and all current South African electrical regulations."
+    answer: "Yes, the COCs are compliant with the latest SANS regulations. We are constantly updating the app/website and working closely with advisors and accreditation bodies to ensure that our COCs are compliant with the latest regulations."
   },
   {
     id: "02",
-    question: "Are the EW documents proprietary designs?",
-    answer: "Yes, our document layouts, smart templates, and reporting structures are proprietary to Energy Warehouse, specifically engineered to provide maximum clarity, security, and professionalism."
+    question: "Are the EW documents proprietary designs, or are they based on Department of Labour documentation?",
+    answer: "EW documents are not arbitrary in-house designs. They are digital versions developed in accordance with Department of Labour requirements and relevant industry regulations, ensuring compliance while providing a more efficient and user-friendly experience."
   },
   {
     id: "03",
     question: "Do my clients need the app?",
-    answer: "No, your clients do not need to download the app. They can view, review, and digitally sign-off on documents via a secure web link that is sent directly to their email or phone."
+    answer: "No, your clients do not need the app. After generating the final COC, you will receive a PDF which you can send them via email or WhatsApp."
   },
   {
     id: "04",
     question: "Are documents stored forever?",
-    answer: "Yes! All your finalized COCs, annexures, and job history are securely archived in the cloud indefinitely. You can search, retrieve, or resend historical documents at any time."
+    answer: "Yes, all documents that have been created are saved securely on the cloud. You can retrieve them anytime and anywhere."
   },
   {
     id: "05",
     question: "Can more than one person work on a job?",
-    answer: "Absolutely. Our platform is built for team collaboration. You can invite other technicians or inspectors to capture data, add photos, or fill out specific sections of the same job before final sign-off."
+    answer: "Yes. You can invite team members to join your company account and collaborate on jobs and documents. The platform allows you to assign specific roles and permissions to each team member, ensuring they have access only to the features and information required for their responsibilities.\n\nPlease note that the team collaboration feature is available exclusively on the Solo and Team subscription plans. The token plan caters for 1 team member only."
   },
   {
     id: "06",
     question: "How does billing work?",
-    answer: "We operate on a simple, transparent 'Pay as you go' token system. You purchase tokens in bulk, and each final official document generation consumes a token. There are no hidden monthly subscription fees."
+    answer: "You can choose between a monthly subscription or a Pay-As-You-Go Token option, depending on your business needs.\n\nWith the Token plan, 1 token provides:\n• 1 × SANS-compliant document\n• 1 × Photo Report\n\nTokens can be purchased at any time, giving you the flexibility to buy only what you need, when you need it.\n\nFor your convenience, all invoices and billing history are securely stored and remain accessible within the app at any time."
   },
   {
     id: "07",
     question: "Do tokens expire?",
-    answer: "No, purchased tokens do not expire. They remain securely in your account balance indefinitely until you use them to generate an official document."
+    answer: "No. Tokens do not expire, so you can use them whenever you need them.\n\nPlease note that tokens are non-refundable, cannot be redeemed for cash, and cannot be transferred to another user account."
   }
 ];
 
@@ -140,7 +140,7 @@ export default function FAQSection() {
                         className="relative z-10"
                       >
                         {/* The padding-left here matches the gap created by the ID and space */}
-                        <div className="pl-[2.5rem] md:pl-[3rem] pb-6 md:pb-8 pr-4 md:pr-16 text-base md:text-lg text-slate-500 leading-relaxed font-medium">
+                        <div className="pl-[2.5rem] md:pl-[3rem] pb-6 md:pb-8 pr-4 md:pr-16 text-base md:text-lg text-slate-500 leading-relaxed font-medium whitespace-pre-line">
                           {faq.answer}
                         </div>
                       </motion.div>
