@@ -195,15 +195,15 @@ export default function Home() {
                       Compliance Resources
                     </span>
                     <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight mb-1 sm:mb-2">
-                      Free Compliance Documents
+                      Knowledge Center
                     </h2>
                     <p className="text-[#89a8c2] text-[11px] sm:text-xs md:text-sm font-light max-w-2xl leading-relaxed">
-                      Preview these essential compliance tools for South African electricians directly in the reader, then download both together as a package.
+                      Preview these essential compliance tools for South African electricians directly in the reader.
                     </p>
                   </div>
 
                   {/* Scrollable Cards Body */}
-                  <div className="flex-1 overflow-y-auto pr-1 no-scrollbar mb-2">
+                  <div className="flex-1 overflow-y-auto pr-1 no-scrollbar">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 py-1 sm:py-2">
                       {/* Doc 1: Solar checklist */}
                       <div className="relative bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#F7931E]/40 transition-all duration-300 group">
@@ -211,7 +211,7 @@ export default function Home() {
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#F7931E]/10 flex items-center justify-center text-[#F7931E] md:mb-3 group-hover:bg-[#F7931E] group-hover:text-white transition-all duration-300 shrink-0">
                             <FileText size={20} className="md:w-[22px] md:h-[22px]" />
                           </div>
-                          <div className="flex-1 min-w-0 pr-10 md:pr-12">
+                          <div className="flex-1 min-w-0">
                             <h3 className="text-sm sm:text-base md:text-lg font-bold group-hover:text-[#F7931E] transition-colors leading-snug">
                               Solar PV Compliance Checklist
                             </h3>
@@ -220,16 +220,6 @@ export default function Home() {
                             </p>
                           </div>
                         </div>
-
-                        {/* Individual Download Icon */}
-                        <a
-                          href="/Solar Inspection checklist 14June26.docx"
-                          download="Solar Inspection checklist 14June26.docx"
-                          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-[#F7931E] hover:bg-[#F7931E]/10 hover:border-[#F7931E]/30 transition-all cursor-pointer z-10 flex items-center justify-center"
-                          title="Download Solar Checklist"
-                        >
-                          <Download size={15} />
-                        </a>
 
                         <div className="flex items-center gap-3 mt-3 md:mt-4">
                           <button
@@ -248,7 +238,7 @@ export default function Home() {
                           <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#00B4D8]/10 flex items-center justify-center text-[#00B4D8] md:mb-3 group-hover:bg-[#00B4D8] group-hover:text-white transition-all duration-300 shrink-0">
                             <ShieldCheck size={20} className="md:w-[22px] md:h-[22px]" />
                           </div>
-                          <div className="flex-1 min-w-0 pr-10 md:pr-12">
+                          <div className="flex-1 min-w-0">
                             <h3 className="text-sm sm:text-base md:text-lg font-bold group-hover:text-[#00B4D8] transition-colors leading-snug">
                               Costly COC Mistakes & Guide
                             </h3>
@@ -257,16 +247,6 @@ export default function Home() {
                             </p>
                           </div>
                         </div>
-
-                        {/* Individual Download Icon */}
-                        <a
-                          href="/COC Mistakes 14June26.docx"
-                          download="COC Mistakes 14June26.docx"
-                          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-[#00B4D8] hover:bg-[#00B4D8]/10 hover:border-[#00B4D8]/30 transition-all cursor-pointer z-10 flex items-center justify-center"
-                          title="Download COC Guide"
-                        >
-                          <Download size={15} />
-                        </a>
 
                         <div className="flex items-center gap-3 mt-3 md:mt-4">
                           <button
@@ -280,21 +260,6 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Sticky Footer Download Option */}
-                  <div className="shrink-0 flex flex-col items-center mt-2 border-t border-white/10 pt-3 sm:pt-4 pb-1">
-                    <a
-                      href="/Energy_Warehouse_Compliance_Documents.zip"
-                      download="Energy_Warehouse_Compliance_Documents.zip"
-                      className="w-full sm:w-auto px-6 py-3 sm:px-10 sm:py-3.5 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-xs sm:text-sm md:text-base hover:opacity-95 hover:scale-[1.01] transition-all flex items-center justify-center gap-2.5 shadow-xl shadow-[#F7931E]/20 cursor-pointer"
-                    >
-                      <Download size={18} className="sm:w-5 sm:h-5" />
-                      Download Compliance Pack (Both)
-                    </a>
-                    <span className="text-[9px] sm:text-[10px] text-white/50 mt-1.5 sm:mt-2 font-light text-center">
-                      Downloads both SANS Checklist and COC Mistakes Guide in a single ZIP file.
-                    </span>
-                  </div>
                 </div>
               ) : (
                 /* ------------------------------------------------------------------ */
@@ -302,35 +267,24 @@ export default function Home() {
                 /* ------------------------------------------------------------------ */
                 <div className="flex flex-col h-full overflow-hidden">
                   {/* Preview Navigation Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-3 sm:pb-4 mb-3 sm:mb-4 gap-3 pr-12 sm:pr-0">
-                    <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
-                      <button
-                        onClick={() => setPreviewDoc(null)}
-                        className="p-1.5 sm:p-2 rounded-lg bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
-                        title="Back to list"
-                      >
-                        <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
-                      </button>
-                      <div className="min-w-0">
-                        <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-[#F7931E] block">
-                          Document Preview
-                        </span>
-                        <h3 className="text-sm sm:text-base md:text-lg font-bold leading-tight truncate">
-                          {previewDoc === "solar"
-                            ? "Solar PV Compliance Checklist"
-                            : "COC Mistakes & Legal Safety Guide"}
-                        </h3>
-                      </div>
-                    </div>
-
-                    <a
-                      href="/Energy_Warehouse_Compliance_Documents.zip"
-                      download="Energy_Warehouse_Compliance_Documents.zip"
-                      className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer text-white self-start sm:self-auto bg-[#F7931E] hover:bg-[#e08419] shadow-lg shadow-[#F7931E]/25 sm:mr-10 w-full sm:w-auto"
+                  <div className="flex items-center gap-2 sm:gap-3 border-b border-white/10 pb-3 sm:pb-4 mb-3 sm:mb-4 pr-10 shrink-0">
+                    <button
+                      onClick={() => setPreviewDoc(null)}
+                      className="p-1.5 sm:p-2 rounded-lg bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
+                      title="Back to list"
                     >
-                      <Download size={14} className="sm:w-4 sm:h-4" />
-                      Download Compliance Pack
-                    </a>
+                      <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
+                    </button>
+                    <div className="min-w-0">
+                      <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-[#F7931E] block">
+                        Document Preview
+                      </span>
+                      <h3 className="text-sm sm:text-base md:text-lg font-bold leading-tight truncate">
+                        {previewDoc === "solar"
+                          ? "Solar PV Compliance Checklist"
+                          : "COC Mistakes & Legal Safety Guide"}
+                      </h3>
+                    </div>
                   </div>
 
                   {/* Scrollable Reader View */}
@@ -380,12 +334,12 @@ export default function Home() {
                             <div key={idx} className="space-y-3">
                               {isIntro ? (
                                 <div className="border-b border-white/5 pb-4 mb-6">
-                                  <h1 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#00B4D8]">
+                                  <h1 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#F7931E]">
                                     {section.title}
                                   </h1>
                                 </div>
                               ) : (
-                                <h4 className="text-base font-bold text-[#00B4D8] tracking-tight mt-4">
+                                <h4 className="text-base font-bold text-[#F7931E] tracking-tight mt-4">
                                   {section.title}
                                 </h4>
                               )}
@@ -399,7 +353,7 @@ export default function Home() {
                                                     paragraph.includes("Preventive measures are key");
                                   if (isCallout) {
                                     return (
-                                      <div key={pIdx} className="bg-white/5 border-l-2 border-[#00B4D8] p-4 rounded-r-xl my-4 text-xs italic text-[#89a8c2]">
+                                      <div key={pIdx} className="bg-white/5 border-l-2 border-[#F7931E] p-4 rounded-r-xl my-4 text-xs italic text-[#89a8c2]">
                                         {paragraph}
                                       </div>
                                     );

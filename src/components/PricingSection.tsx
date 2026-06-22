@@ -208,9 +208,12 @@ export default function PricingSection() {
                 <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ month</span>
               </div>
 
-              <button className="w-full py-3.5 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-sm hover:brightness-110 transition-all duration-300 shadow-[0_5px_20px_rgba(247,147,30,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] mb-4 hover:-translate-y-1">
+              <a 
+                href="https://app.ew.energy/"
+                className="w-full py-3.5 bg-gradient-to-r from-[#F7931E] to-[#FFB75E] text-white rounded-xl font-bold text-sm hover:brightness-110 transition-all duration-300 shadow-[0_5px_20px_rgba(247,147,30,0.4),inset_0_1px_0_rgba(255,255,255,0.4)] mb-4 hover:-translate-y-1 block text-center"
+              >
                 Get Started
-              </button>
+              </a>
 
               <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-4" />
 

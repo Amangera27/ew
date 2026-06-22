@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ArrowRight, PlayCircle, ArrowUpRight, ChevronDown, Download } from "lucide-react";
+import { ArrowRight, PlayCircle, ArrowUpRight, ChevronDown, BookOpen } from "lucide-react";
 
 const BG_IMAGES = [
   "/bg_front.png",      // original dark blue digital circuit/web image
@@ -245,8 +245,8 @@ export default function HeroSection({
                 }
               }}
             >
-              <Download size={16} />
-              Free Download
+              <BookOpen size={16} />
+              Knowledge Center
             </button>
           </motion.div>
         </div>

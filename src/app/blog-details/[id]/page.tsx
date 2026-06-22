@@ -18,13 +18,12 @@ export default function BlogDetailsPage({ params }: { params: Promise<{ id: stri
     <main className="bg-[#f5f8fb] min-h-screen flex flex-col font-sans text-[#263238] selection:bg-[#F7931E] selection:text-white relative">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,#0B3C5D08_1px,transparent_1px),linear-gradient(to_bottom,#0B3C5D08_1px,transparent_1px)] bg-[size:40px_40px] z-0"></div>
-
       {/* Top Mini-Nav for Blog */}
       <div className="w-full bg-[#0B3C5D] px-6 py-4 flex justify-start items-center z-50 relative">
-        <Link href="/" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
+        <a href="/#blog" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group">
           <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
           <span className="font-medium text-[11px] tracking-wide uppercase">Back to Home</span>
-        </Link>
+        </a>
       </div>
 
       {/* Main Hero Header */}
