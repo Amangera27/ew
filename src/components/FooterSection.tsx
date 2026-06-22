@@ -92,6 +92,7 @@ export default function FooterSection() {
                 <ul className="grid grid-cols-2 gap-x-2 gap-y-3">
                   {[
                     { name: "Home", icon: Zap, href: "/" },
+                    { name: "About Us", icon: Users, href: "/about" },
                     { name: "Features", icon: Smartphone, href: "/#features" },
                     { name: "Pricing", icon: CreditCard, href: "/#pricing" },
                     { name: "FAQ", icon: MessageCircle, href: "/#faq" },
@@ -154,12 +155,14 @@ export default function FooterSection() {
               <div className="flex gap-4">
                 {[
                   { icon: LinkedinIcon, link: "#" },
-                  { icon: FacebookIcon, link: "#" },
-                  { icon: InstagramIcon, link: "#" },
+                  { icon: FacebookIcon, link: "https://www.facebook.com/energy.warehouse/" },
+                  { icon: InstagramIcon, link: "https://www.instagram.com/ener_warehouse/" },
                 ].map((social, idx) => (
                   <a 
                     key={idx}
                     href={social.link} 
+                    target={social.link !== "#" ? "_blank" : undefined}
+                    rel={social.link !== "#" ? "noopener noreferrer" : undefined}
                     className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#89a8c2] hover:text-white hover:bg-[#F7931E] hover:border-[#F7931E] hover:scale-110 transition-all duration-300"
                   >
                     <social.icon className="w-5 h-5" />

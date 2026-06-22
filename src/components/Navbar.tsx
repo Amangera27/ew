@@ -5,11 +5,28 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar({ disableAnimation = false }: { disableAnimation?: boolean }) {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/" && pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const targetId = href.substring(2); // remove "/#"
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +47,7 @@ export default function Navbar({ disableAnimation = false }: { disableAnimation?
     { name: "Home", href: "/" },
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/#pricing" },
+    { name: "About Us", href: "/about" },
     { name: "FAQ", href: "/#faq" }
   ];
 
@@ -86,6 +104,7 @@ export default function Navbar({ disableAnimation = false }: { disableAnimation?
               <Link 
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavLinkClick(e, link.href)}
                 onMouseEnter={() => setHoveredLink(link.name)}
                 onMouseLeave={() => setHoveredLink(null)}
                 className={`relative px-6 py-2.5 text-[14px] font-medium transition-colors duration-300 rounded-full ${
@@ -161,7 +180,10 @@ export default function Navbar({ disableAnimation = false }: { disableAnimation?
                 <Link 
                   key={link.name} 
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    setIsMobileMenuOpen(false);
+                    handleNavLinkClick(e, link.href);
+                  }}
                   className={`font-medium px-4 py-3 rounded-xl transition-colors ${
                     isScrolled ? 'hover:bg-gray-100' : 'hover:bg-white/10'
                   }`}
