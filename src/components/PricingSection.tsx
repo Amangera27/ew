@@ -171,9 +171,12 @@ export default function PricingSection() {
                 <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ token</span>
               </div>
 
-              <button className="w-full py-3 bg-white/10 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
+              <a 
+                href="https://app.ew.energy/"
+                className="w-full py-3 bg-white/10 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm block text-center"
+              >
                 Start Free
-              </button>
+              </a>
 
               <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-4" />
 
@@ -248,9 +251,12 @@ export default function PricingSection() {
                 <span className="text-blue-200 font-medium text-[11px] mb-0.5">/ month</span>
               </div>
 
-              <button className="w-full py-3 bg-white/10 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm">
+              <a 
+                href="https://app.ew.energy/"
+                className="w-full py-3 bg-white/10 border border-white/20 text-white rounded-xl text-sm font-semibold hover:bg-white/25 hover:border-white/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] transition-all duration-300 mb-4 backdrop-blur-sm block text-center"
+              >
                 Contact Sales
-              </button>
+              </a>
 
               <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent mb-4" />
 

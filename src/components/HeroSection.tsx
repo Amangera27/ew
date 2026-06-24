@@ -9,10 +9,10 @@ const BG_IMAGES = [
   "/hero_solar_1.png",  // solar farm golden hour
 ];
 
-export default function HeroSection({ 
+export default function HeroSection({
   ready = false,
   onFreeDownloadClick
-}: { 
+}: {
   ready?: boolean;
   onFreeDownloadClick?: () => void;
 }) {
@@ -170,9 +170,9 @@ export default function HeroSection({
                 The New Standard for Compliance
               </span>
             </div>
-            
+
             {/* Affiliation Badge based on PDF */}
-            <a 
+            <a
               href="https://nearbyelectrician.co.za/"
               target="_blank"
               rel="noopener noreferrer"
@@ -221,7 +221,7 @@ export default function HeroSection({
               className="w-full sm:w-auto justify-center px-6 py-2.5 md:px-8 md:py-3.5 bg-[var(--color-accent)] text-white rounded-full text-xs md:text-sm font-semibold hover:bg-[#e08419] transition-all duration-300 flex items-center gap-2 group transform hover:scale-[1.02] pointer-events-auto shadow-lg shadow-[#F7931E]/20"
               onClick={(e) => e.stopPropagation()}
             >
-              Start Free
+              Book a demo
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
 
